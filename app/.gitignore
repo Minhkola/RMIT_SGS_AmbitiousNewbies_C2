@@ -1,0 +1,18 @@
+# dependencies / build
+/node_modules
+/.next
+/out
+
+# secrets / local env
+.env.local
+.env*.local
+
+# CamGuard runtime state — auto-seeded on first run (see lib/store.ts).
+# cameras.json and events.json ARE tracked as reference data.
+/data/clips/
+/data/requests.json
+/data/audit.json
+
+# misc
+*.log
+.DS_Store

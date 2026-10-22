@@ -1,0 +1,408 @@
+[
+  {
+    "id": "ev-0044",
+    "ts": "2026-10-21T01:30:00+07:00",
+    "camera": "CAM-ROOF",
+    "zone": "Level 25",
+    "type": "motion_after_hours",
+    "count": 1,
+    "note": "Unscheduled rooftop motion alert"
+  },
+  {
+    "id": "ev-0045",
+    "ts": "2026-10-21T02:05:00+07:00",
+    "camera": "CAM-B1-RAMP",
+    "zone": "Basement B1",
+    "type": "motion_after_hours",
+    "count": 1,
+    "note": "Late-night ramp sensor trigger"
+  },
+  {
+    "id": "ev-0001",
+    "ts": "2026-10-21T07:10:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1,
+    "note": "Morning commuter pass"
+  },
+  {
+    "id": "ev-0002",
+    "ts": "2026-10-21T07:16:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1,
+    "note": "Morning commuter pass"
+  },
+  {
+    "id": "ev-0007",
+    "ts": "2026-10-21T07:20:00+07:00",
+    "camera": "CAM-B1-RAMP",
+    "zone": "Basement B1",
+    "type": "vehicle_out",
+    "count": 1,
+    "plate_masked": "51K-***.12"
+  },
+  {
+    "id": "ev-0003",
+    "ts": "2026-10-21T07:22:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1,
+    "note": "Morning commuter pass"
+  },
+  {
+    "id": "ev-0008",
+    "ts": "2026-10-21T07:27:00+07:00",
+    "camera": "CAM-B1-RAMP",
+    "zone": "Basement B1",
+    "type": "vehicle_out",
+    "count": 1,
+    "plate_masked": "59P1-***.47"
+  },
+  {
+    "id": "ev-0004",
+    "ts": "2026-10-21T07:28:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1,
+    "note": "Morning commuter pass"
+  },
+  {
+    "id": "ev-0005",
+    "ts": "2026-10-21T07:34:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1,
+    "note": "Morning commuter pass"
+  },
+  {
+    "id": "ev-0009",
+    "ts": "2026-10-21T07:34:00+07:00",
+    "camera": "CAM-B1-RAMP",
+    "zone": "Basement B1",
+    "type": "vehicle_out",
+    "count": 1,
+    "plate_masked": "30A-***.88"
+  },
+  {
+    "id": "ev-0006",
+    "ts": "2026-10-21T07:40:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1,
+    "note": "Morning commuter pass"
+  },
+  {
+    "id": "ev-0010",
+    "ts": "2026-10-21T07:41:00+07:00",
+    "camera": "CAM-B1-RAMP",
+    "zone": "Basement B1",
+    "type": "vehicle_out",
+    "count": 1,
+    "plate_masked": "43C-***.01"
+  },
+  {
+    "id": "ev-0011",
+    "ts": "2026-10-21T07:48:00+07:00",
+    "camera": "CAM-B1-RAMP",
+    "zone": "Basement B1",
+    "type": "vehicle_out",
+    "count": 1,
+    "plate_masked": "72H1-***.33"
+  },
+  {
+    "id": "ev-0012",
+    "ts": "2026-10-21T08:12:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1,
+    "note": "Lobby turnstile entry"
+  },
+  {
+    "id": "ev-0013",
+    "ts": "2026-10-21T08:30:00+07:00",
+    "camera": "CAM-L12-HALL",
+    "zone": "Floor 12",
+    "type": "door_open",
+    "count": 1,
+    "note": "Stairwell fire door check"
+  },
+  {
+    "id": "ev-0014",
+    "ts": "2026-10-21T09:05:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "59P1-***.47"
+  },
+  {
+    "id": "ev-0015",
+    "ts": "2026-10-21T09:48:00+07:00",
+    "camera": "CAM-PARCEL",
+    "zone": "Ground Floor",
+    "type": "parcel_drop",
+    "count": 1,
+    "note": "Courier drop-off at Locker #2"
+  },
+  {
+    "id": "ev-0016",
+    "ts": "2026-10-21T10:15:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "30A-***.88"
+  },
+  {
+    "id": "ev-0017",
+    "ts": "2026-10-21T11:02:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1
+  },
+  {
+    "id": "ev-0018",
+    "ts": "2026-10-21T11:40:00+07:00",
+    "camera": "CAM-B1-RAMP",
+    "zone": "Basement B1",
+    "type": "vehicle_out",
+    "count": 1,
+    "plate_masked": "43C-***.01"
+  },
+  {
+    "id": "ev-0019",
+    "ts": "2026-10-21T12:20:00+07:00",
+    "camera": "CAM-PARCEL",
+    "zone": "Ground Floor",
+    "type": "parcel_drop",
+    "count": 1,
+    "note": "Express package logged"
+  },
+  {
+    "id": "ev-0020",
+    "ts": "2026-10-21T13:10:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "72H1-***.33"
+  },
+  {
+    "id": "ev-0021",
+    "ts": "2026-10-21T14:25:00+07:00",
+    "camera": "CAM-L12-HALL",
+    "zone": "Floor 12",
+    "type": "door_open",
+    "count": 1
+  },
+  {
+    "id": "ev-0022",
+    "ts": "2026-10-21T15:00:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "92F1-***.20"
+  },
+  {
+    "id": "ev-0023",
+    "ts": "2026-10-21T15:42:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1
+  },
+  {
+    "id": "ev-0024",
+    "ts": "2026-10-21T16:18:00+07:00",
+    "camera": "CAM-B1-RAMP",
+    "zone": "Basement B1",
+    "type": "vehicle_out",
+    "count": 1,
+    "plate_masked": "51K-***.12"
+  },
+  {
+    "id": "ev-0025",
+    "ts": "2026-10-21T17:00:00+07:00",
+    "camera": "CAM-PARCEL",
+    "zone": "Ground Floor",
+    "type": "parcel_drop",
+    "count": 1,
+    "note": "Locker Bay #4 delivery"
+  },
+  {
+    "id": "ev-0026",
+    "ts": "2026-10-21T17:05:00+07:00",
+    "camera": "CAM-PARCEL",
+    "zone": "Ground Floor",
+    "type": "parcel_drop",
+    "count": 1,
+    "note": "Locker Bay #4 delivery"
+  },
+  {
+    "id": "ev-0027",
+    "ts": "2026-10-21T17:30:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "51K-***.12"
+  },
+  {
+    "id": "ev-0028",
+    "ts": "2026-10-21T17:34:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "59P1-***.47"
+  },
+  {
+    "id": "ev-0029",
+    "ts": "2026-10-21T17:38:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "30A-***.88"
+  },
+  {
+    "id": "ev-0030",
+    "ts": "2026-10-21T17:42:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "43C-***.01"
+  },
+  {
+    "id": "ev-0031",
+    "ts": "2026-10-21T17:46:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "72H1-***.33"
+  },
+  {
+    "id": "ev-0032",
+    "ts": "2026-10-21T17:50:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "92F1-***.20"
+  },
+  {
+    "id": "ev-0033",
+    "ts": "2026-10-21T17:54:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "51K-***.12"
+  },
+  {
+    "id": "ev-0034",
+    "ts": "2026-10-21T17:58:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "59P1-***.47"
+  },
+  {
+    "id": "ev-0035",
+    "ts": "2026-10-21T18:22:00+07:00",
+    "camera": "CAM-B1-RAMP",
+    "zone": "Basement B1",
+    "type": "vehicle_out",
+    "count": 1,
+    "plate_masked": "30A-***.88"
+  },
+  {
+    "id": "ev-0036",
+    "ts": "2026-10-21T18:30:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1
+  },
+  {
+    "id": "ev-0037",
+    "ts": "2026-10-21T18:38:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1
+  },
+  {
+    "id": "ev-0038",
+    "ts": "2026-10-21T18:46:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1
+  },
+  {
+    "id": "ev-0039",
+    "ts": "2026-10-21T18:54:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "person_detected",
+    "count": 1
+  },
+  {
+    "id": "ev-0040",
+    "ts": "2026-10-21T19:15:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "59P1-***.47"
+  },
+  {
+    "id": "ev-0041",
+    "ts": "2026-10-21T20:05:00+07:00",
+    "camera": "CAM-L12-HALL",
+    "zone": "Floor 12",
+    "type": "door_open",
+    "count": 1
+  },
+  {
+    "id": "ev-0042",
+    "ts": "2026-10-21T21:43:00+07:00",
+    "camera": "CAM-L12-HALL",
+    "zone": "Floor 12",
+    "type": "person_detected",
+    "count": 1,
+    "note": "Corridor activity near Apt 1205 bike rack"
+  },
+  {
+    "id": "ev-0043",
+    "ts": "2026-10-21T21:44:00+07:00",
+    "camera": "CAM-B1-GATE",
+    "zone": "Basement B1",
+    "type": "vehicle_in",
+    "count": 1,
+    "plate_masked": "51K-***.12"
+  },
+  {
+    "id": "ev-0046",
+    "ts": "2026-10-21T23:50:00+07:00",
+    "camera": "CAM-LOBBY",
+    "zone": "Ground Floor",
+    "type": "motion_after_hours",
+    "count": 1,
+    "note": "Night guard patrol check-in"
+  }
+]

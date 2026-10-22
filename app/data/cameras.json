@@ -1,0 +1,38 @@
+[
+  {
+    "id": "CAM-B1-GATE",
+    "name": "Basement B1 Main Gate",
+    "zone": "Basement B1",
+    "status": "ONLINE"
+  },
+  {
+    "id": "CAM-B1-RAMP",
+    "name": "Basement B1 Exit Ramp",
+    "zone": "Basement B1",
+    "status": "ONLINE"
+  },
+  {
+    "id": "CAM-LOBBY",
+    "name": "Main Atrium Lobby",
+    "zone": "Ground Floor",
+    "status": "ONLINE"
+  },
+  {
+    "id": "CAM-L12-HALL",
+    "name": "Floor 12 North Corridor",
+    "zone": "Floor 12",
+    "status": "RESTRICTED"
+  },
+  {
+    "id": "CAM-ROOF",
+    "name": "Rooftop Mechanical Deck",
+    "zone": "Level 25",
+    "status": "RESTRICTED"
+  },
+  {
+    "id": "CAM-PARCEL",
+    "name": "Smart Parcel Locker Bay",
+    "zone": "Ground Floor",
+    "status": "ONLINE"
+  }
+]
