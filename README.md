@@ -7,6 +7,12 @@ _CamGuard is an AI concierge for apartment CCTV that answers anything about the 
 
 Built with [TideCloak](https://tide.org/tidecloak?utm_source=github&utm_medium=readme&utm_campaign=unlocked).
 
+### Main purpose of this website
+
+CamGuard exists to answer one question: **how can a building run an AI over its CCTV without creating a single person (or AI) who can watch everyone?**
+
+The site is a working prototype that demonstrates **privacy-by-authority**: residents and staff ask an AI concierge anything about the cameras — "how many cars entered today?", "any motion at the lobby overnight?" — and get instant answers drawn **only from anonymous sensor metadata**. The raw video stays cryptographically sealed. Nobody can decrypt a clip — not the AI, the security guard, the IT admin, or the camera vendor — until a **majority of the building board co-signs** a reasoned, logged request. The goal is to prove that the right to watch footage can be governed by a quorum of people instead of held by whoever controls the server, and that even a **successful prompt-injection attack on the AI steals nothing**, because the AI never holds a decryption key.
+
 ### 1. Vision & originality
 
 An apartment-camera AI where the power to watch footage belongs to no one — not the AI, the guard, the admin, or the vendor. The AI reasons freely over event metadata; raw video stays sealed until people grant access.
@@ -63,11 +69,44 @@ wsl bash -c "cd /mnt/d/RMIT_Hackathon/C2/app && bash init/camguard-setup.sh"
 ```
 It creates `lan` (resident), `resrep`/`invrep` (board), `techadmin` (ingest), **prints a Tide enrollment link per user**, and files their role grants + three `tide-realm-admin` grants (the board quorum). Enroll each link in a separate private window; approve any pending change-requests in **Admin Console → Change Requests** (`http://localhost:8080/admin/master/console/#/nextjs-test`).
 
-### 4. Run
-```bash
-npm.cmd run dev          # → http://localhost:3000
+### 4. Run it locally yourself (detailed)
+
+CamGuard has **two processes**: the TideCloak server (Docker, port `8080`) and the Next.js app (port `3000`). Both must be up. Follow these exactly on Windows.
+
+**Step 1 — Start TideCloak (once per machine boot).** In any terminal:
+```powershell
+docker start mytidecloak
 ```
-Data (cameras, a day of synthetic events, six AES-GCM-sealed synthetic clips) auto-seeds on first use.
+Confirm it's healthy (should return JSON, not an error):
+```powershell
+curl http://localhost:8080/realms/nextjs-test/.well-known/openid-configuration
+```
+
+**Step 2 — Start the app.** Open a **dedicated** PowerShell window (or the VS Code terminal: *Terminal → New Terminal*) and run:
+```powershell
+cd d:\RMIT_Hackathon\C2\app
+npm.cmd run dev
+```
+Wait for the line `✓ Ready in …s`, then open **http://localhost:3000** and hard-refresh with **Ctrl+Shift+R** (clears cached CSS).
+
+> **Keep this terminal window open the whole time.** The dev server runs *inside* that window — if you close it, press `Ctrl+C`, log out, or let the process be killed, the site goes down (`localhost refused to connect`). This is the usual cause of "it stopped working again." To stop it on purpose, press `Ctrl+C`; to restart, just re-run `npm.cmd run dev`.
+
+**Step 3 — Verify both are up.** Quick check in a second terminal:
+```powershell
+(Test-NetConnection localhost -Port 8080).TcpTestSucceeded   # TideCloak  → True
+(Test-NetConnection localhost -Port 3000).TcpTestSucceeded   # App        → True
+```
+
+Data (cameras, a day of synthetic events, six AES-GCM-sealed synthetic clips) **auto-seeds on first use** — nothing to import.
+
+**If it won't start:**
+| Symptom | Fix |
+|---|---|
+| `localhost:3000 refused to connect` | The dev-server terminal was closed. Re-run **Step 2** and leave the window open. |
+| TideCloak calls fail / login hangs | Container isn't running: `docker start mytidecloak`, then re-check with the Step-1 `curl`. |
+| `npm.cmd` not recognised | Node/npm isn't installed or not on PATH — install Node 20+. |
+| Page looks stale after a change | Hard refresh (**Ctrl+Shift+R**). |
+| Port 3000 already in use | Another dev server is running; close it, or run on another port: `npm.cmd run dev -- -p 3001`. |
 
 ### Demo it in 2 minutes (guest mode — no login)
 
@@ -84,6 +123,20 @@ Switch identity from the **persona menu** in the top-right of the nav. Full deta
 2. File a request → it grants `cctv-viewer` via a real IGA change-request.
 3. Board members sign the CR in **Admin Console → Change Requests** (approvals are credited to whoever signs in the browser, so they can't be proxied through the server).
 4. Refresh the session; the Fabric-signed token now carries `cctv-viewer` and the clip decrypts. See [DEMO.md §9](DEMO.md).
+
+### How TideCloak is used in this web (what, where, why)
+
+CamGuard is not "TideCloak-flavoured" — the core privacy guarantee **is** TideCloak. Here is exactly what the app leans on and in which file:
+
+| # | TideCloak capability | Where in the code | What it actually does here |
+|---|---|---|---|
+| 1 | **Realm + IGA + Fabric threshold keys** | [`app/tidecloak.json`](app/tidecloak.json) | Anchors the app to realm `nextjs-test` and the Tide Cybersecurity Fabric. `jwk` is the Fabric's **threshold-signed** Ed25519 public key (`thresholdT:14 / thresholdN:20`); this is what every token is verified against. |
+| 2 | **Verify Fabric-signed tokens + enforce roles** | [`app/lib/auth.ts`](app/lib/auth.ts) → `verifyTideCloakToken()` | On every protected route it checks the **threshold signature**, issuer and `azp`, then requires a role. Because roles live *inside* a Fabric-signed token, **no admin can forge one in**. |
+| 3 | **Quorum-Enforced Governance (capture-then-veto)** | [`app/lib/tcAdmin.ts`](app/lib/tcAdmin.ts) → `proposeRoleGrant`, `getQuorumState` | A view request calls TideCloak's **Admin REST**; IGA captures the role change as a **real PENDING change-request** (HTTP 202) instead of applying it. `getQuorumState` reads live approval counts from `/iga/change-requests/{id}`. This is the heart of the "majority of the board" rule. |
+| 4 | **The decryption gate = a quorum-granted role** | [`app/app/api/clips/[id]/view/route.ts`](app/app/api/clips/[id]/view/route.ts) → `requireRole(['cctv-viewer'])` | No `cctv-viewer` role → **`403 NO_DECRYPTION_AUTHORITY`**. The AI and the IT admin are powerless for the same cryptographic reason: neither can get this role without board quorum. |
+| 5 | **Create / read / sign change-requests** | [`app/app/api/requests/route.ts`](app/app/api/requests/route.ts) | `POST` files the change-request; `PATCH` records board signatures; `GET` returns the **live** quorum state read from TideCloak — the app never fabricates approval numbers. |
+
+**In one sentence:** TideCloak turns "the authority to decrypt a clip" into a realm **role** (`cctv-viewer`) that can *only* be attached by a **Quorum-Enforced change-request** carrying a majority of board members' Tide-enclave signatures, and every request is verified against the Fabric's threshold-signed token — so the key to watch doesn't exist until identity, policy, and approvals all align.
 
 ### How the security actually holds (honest notes)
 - **The gate is real.** `cctv-viewer` is a plain realm role that TideCloak only attaches after a board-quorum change-request commits; the token is threshold-signed by the Tide Fabric, so the role can't be forged. A `200` from `/api/clips/[id]/view` is cryptographic proof that quorum happened.
